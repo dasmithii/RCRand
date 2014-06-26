@@ -1,10 +1,14 @@
 BufferedReader reader;
 String line;
 int i = 0;
+Bytemap map;
+Distribution dist;
  
 void setup() {
-  reader = createReader("out.txt");    
+  reader = createReader("out.txt"); 
   size(1000, 1000);
+  map = new Bytemap();
+  dist = new Distribution();
 }
  
 void getPoint(){
@@ -16,20 +20,18 @@ void getPoint(){
   }
 
   if (line == null) {
-    noLoop();  
   } else {
     int val = int(line);
-    int x = i % width;
-    int y = i / width;
-    fill(val); stroke(val);
-    point(x, y);
-    i++;
+    map.register(val);
+    dist.register(val);
   }
 } 
 
 void draw() {
   for(int i = 0; i < 1000; ++i)
     getPoint();
+  map.draw();
+  dist.draw(0, 0, 300, 200);
 } 
 
 
