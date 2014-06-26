@@ -1,3 +1,7 @@
+#include "generator.h"
+
 int main(int argc, char *argv[]){
-	printf("OMG HEY!\n");
+	rcr gen;
+	rcr_init(&gen, 5);
+	rcr_output_forever_formatted(&gen);
 }
