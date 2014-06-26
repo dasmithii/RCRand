@@ -1,6 +1,8 @@
 ### RCRand
 After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation.
 
+![](https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png =230x230)
+
 Here's the (summarized) algorithm.
 
 ###### (1) Setup
@@ -63,8 +65,3 @@ rcrand -format
 136
 ...
 ```
-
-
-
-### Visualization
-![Bytemap](https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png)
