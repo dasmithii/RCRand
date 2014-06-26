@@ -4,9 +4,12 @@
 #define SEGMENT_SIZE 100
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 #include <pthread.h>
 
 
+// 
 typedef struct {
 	pthread_mutex_t mutex;
 	pthread_t *threads;
@@ -17,11 +20,14 @@ typedef struct {
 
 int rcr_init(rcr *gen, size_t num_workers);
 void rcr_kill(rcr *gen);
-char rcr_generate_byte(rcr *gen);
-char *rcr_generate_bytes(rcr *gen, size_t n);
-void rcr_output(rcr *gen);
-void rcr_output_formatted(rcr *gen);
-void rcr_output_forever(rcr *gen);
-void rcr_output_forever_formatted(rcr *gen);
+unsigned char rcr_byte(rcr *gen);
+void rcr_output(rcr *gen, bool formatted);
+
+
+// Global Generator
+int grcr_init(size_t num_workers);
+void grcr_kill();
+unsigned char grcr_byte();
+void grcr_output(bool formatted);
 
 #endif

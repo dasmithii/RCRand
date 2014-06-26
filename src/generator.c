@@ -46,19 +46,19 @@ void rcr_kill(rcr *gen)
 }
 
 // ----------------------------------------------------------- //
-static char rcr_current_byte(rcr *gen)
+static unsigned char rcr_current_byte(rcr *gen)
 {
-	char byte = gen->buffer[0];
+	unsigned char byte = gen->buffer[0];
 	for(int i = 1; i < BUFFER_SIZE; ++i)
 		byte ^= gen->buffer[i];
 	return byte;
 }
 
 // ----------------------------------------------------------- //
-char rcr_generate_byte(rcr *gen)
+unsigned char rcr_byte(rcr *gen)
 {
 	pthread_mutex_lock(&gen->mutex);
-	char byte;
+	unsigned char byte;
 	do {
 		byte = rcr_current_byte(gen);
 	} while(byte == gen->prev);
@@ -68,47 +68,41 @@ char rcr_generate_byte(rcr *gen)
 }
 
 // ----------------------------------------------------------- //
-char *rcr_generate_bytes(rcr *gen, size_t n)
+void rcr_output(rcr *gen, bool formatted)
 {
-	char *ret = malloc(n);
-	for(int i = 0; i < n; ++i)
-		ret[i] = rcr_generate_byte(gen);
-	return ret;
+	unsigned char byte = rcr_byte(gen);
+	if(formatted)
+		printf("%d\n", (unsigned int) byte);
+	else
+		printf("%c", (char) byte);
 }
 
 // ----------------------------------------------------------- //
-void rcr_output_byte(rcr *gen)
+static rcr *rcr_g = NULL;
+
+// ----------------------------------------------------------- //
+int grcr_init(size_t num_workers)
 {
-	char byte = rcr_generate_byte(gen);
-	printf("%c", byte);
+	rcr_g = malloc(sizeof(rcr));
+	if(!rcr_g)
+		return 1;
+	return rcr_init(rcr_g, num_workers);
 }
 
 // ----------------------------------------------------------- //
-void rcr_output_byte_formatted(rcr *gen)
+void grcr_kill()
 {
-	char byte = rcr_generate_byte(gen);
-	printf("%d\n", (unsigned char) byte);
+	rcr_kill(rcr_g);
 }
 
 // ----------------------------------------------------------- //
-static void rcr_output_segment(rcr *gen)
+unsigned char grcr_byte()
 {
-	char bytes[SEGMENT_SIZE];
-	for(int i = 0; i < SEGMENT_SIZE; ++i)
-		bytes[i] = rcr_generate_byte(gen);
-	printf("%.*s", SEGMENT_SIZE, bytes);
+	return rcr_byte(rcr_g);
 }
 
 // ----------------------------------------------------------- //
-void rcr_output_forever(rcr *gen)
+void grcr_output(bool formatted)
 {
-	for(;;)
-		rcr_output_segment(gen);
-}
-
-// ----------------------------------------------------------- //
-void rcr_output_forever_formatted(rcr *gen)
-{
-	for(;;)
-		rcr_output_byte_formatted(gen);
+	rcr_output(rcr_g, formatted);
 }
