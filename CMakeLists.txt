@@ -11,3 +11,7 @@ file(GLOB_RECURSE src_files
   "src/*.c"
 )
 add_executable(rcrand ${src_files})
+
+
+# Install RCRand.
+install(TARGETS rcrand DESTINATION /usr/local/bin)
