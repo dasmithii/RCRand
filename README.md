@@ -63,3 +63,8 @@ rcrand -format
 136
 ...
 ```
+
+
+
+### Visualization
+![Bytemap](https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png)
