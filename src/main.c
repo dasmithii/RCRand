@@ -30,8 +30,6 @@ int main(int argc, char *argv[]){
 	grcr_init(5);
 
 	const bool formatted = has_flag("format", argc, argv);
-	if(formatted)
-		printf("FORMATED\n");
 	const char *num_spec = get_option("bytes", argc, argv);
 	const size_t bytes   = num_spec? atoi(num_spec):0;
 
