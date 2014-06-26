@@ -1,8 +1,6 @@
 ### RCRand
 After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation.
 
-<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png" width="300px" height="300px" />
-
 Here's the (summarized) algorithm.
 
 ###### (1) Setup
@@ -16,6 +14,11 @@ Here's the (summarized) algorithm.
 
 ###### (3) Tear-down
 + Cancel all worker threads.
+
+
+
+### Visualization
+<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png" width="300px" height="300px" />
 
 
 
