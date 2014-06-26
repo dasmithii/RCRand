@@ -6,10 +6,8 @@ static void work_once(void *addr)
 	char *buffer = addr;
 	for(int b = 0; b < BUFFER_SIZE; ++b){
 		const char byte = buffer[b];
-		for(int i = 0; i < byte; ++i){
-			int offset = (b + byte) % BUFFER_SIZE;
-			buffer[b] ^= buffer[offset];
-		}
+		int offset = (b + byte) % BUFFER_SIZE;
+		buffer[b] ^= buffer[offset];
 	}
 }
 

@@ -1,6 +1,6 @@
 #ifndef _RCRAND_GENERATOR_H_
 #define _RCRAND_GENERATOR_H_
-#define BUFFER_SIZE 50
+#define BUFFER_SIZE 234
 #define SEGMENT_SIZE 100
 #include <stdlib.h>
 #include <stdio.h>
