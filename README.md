@@ -1,7 +1,7 @@
 ### RCRand
 After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation.
 
-<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png " width="200px" height="200px" />
+<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png" width="200px" height="200px" />
 
 Here's the (summarized) algorithm.
 
