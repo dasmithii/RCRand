@@ -11,10 +11,3 @@ file(GLOB_RECURSE src_files
   "src/*.c"
 )
 add_executable(rcrand ${src_files})
-
-# Build test executable.
-file(GLOB_RECURSE test_files
-  "test/*.h"
-  "test/*.c"
-)
-add_executable(tests ${test_files})

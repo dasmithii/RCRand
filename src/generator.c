@@ -40,7 +40,7 @@ int rcr_init(rcr *gen, size_t num_workers)
 void rcr_kill(rcr *gen)
 {
 	for(int i = 0; i < gen->num_threads; ++i)
-		pthread_join(gen->threads[i], NULL);
+		pthread_cancel(gen->threads[i]);
 	free(gen->threads);
 	gen->num_threads = 0;
 }
@@ -68,6 +68,15 @@ char rcr_generate_byte(rcr *gen)
 }
 
 // ----------------------------------------------------------- //
+char *rcr_generate_bytes(rcr *gen, size_t n)
+{
+	char *ret = malloc(n);
+	for(int i = 0; i < n; ++i)
+		ret[i] = rcr_generate_byte(gen);
+	return ret;
+}
+
+// ----------------------------------------------------------- //
 void rcr_output_byte(rcr *gen)
 {
 	char byte = rcr_generate_byte(gen);
@@ -78,7 +87,7 @@ void rcr_output_byte(rcr *gen)
 void rcr_output_byte_formatted(rcr *gen)
 {
 	char byte = rcr_generate_byte(gen);
-	printf("%d\n", byte);
+	printf("%d\n", (unsigned char) byte);
 }
 
 // ----------------------------------------------------------- //

@@ -18,6 +18,7 @@ typedef struct {
 int rcr_init(rcr *gen, size_t num_workers);
 void rcr_kill(rcr *gen);
 char rcr_generate_byte(rcr *gen);
+char *rcr_generate_bytes(rcr *gen, size_t n);
 void rcr_output(rcr *gen);
 void rcr_output_formatted(rcr *gen);
 void rcr_output_forever(rcr *gen);
