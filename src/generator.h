@@ -9,7 +9,7 @@
 #include <pthread.h>
 
 
-// 
+// Race Condition Random Generator
 typedef struct {
 	pthread_mutex_t mutex;
 	pthread_t *threads;
@@ -24,7 +24,7 @@ unsigned char rcr_byte(rcr *gen);
 void rcr_output(rcr *gen, bool formatted);
 
 
-// Global Generator
+// Global Generator 
 int grcr_init(size_t num_workers);
 void grcr_kill();
 unsigned char grcr_byte();
