@@ -79,6 +79,7 @@ void rcr_output(rcr *gen, bool formatted)
 		printf("%c", (char) byte);
 }
 
+
 // Global Generator.
 static rcr *rcr_g = NULL;
 
