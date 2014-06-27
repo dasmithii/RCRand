@@ -1,7 +1,7 @@
 ### RCRand
 After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation. 
 
-Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzying over a lego structure, where monkeys are worker threads and lego structure represents memory contents. As they chaotically rearrange blocks, snapshots are taken periodically and translated into integral form. For all practical purposes, these are random numbers.
+Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzying over a lego structure, where monkeys are worker threads and lego structure represents memory contents. As they chaotically rearrange blocks, interfering with each other at times, snapshots are taken periodically and translated into integral form. For all practical purposes, these are random numbers.
 
 
 
