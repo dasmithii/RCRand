@@ -1,14 +1,16 @@
 ### RCRand
-After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation.
+After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation. 
 
-Here's the (summarized) algorithm.
+Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzying over a lego structure, where monkeys are worker threads and lego structure represents memory contents. As they chaotically rearrange blocks, snapshots are taken periodically and translated into integral form. For all practical purposes, these are random.
+
+
 
 ###### (1) Setup
-+ Obtain a byte buffer unix rand(). This serves as a starting point for the output sequence.
++ Obtain a byte buffer from unix rand(). This serves as a starting point for the output sequence.
 + Spawn a thread pool.
 
 ###### (2) Generation
-+ Have each worker thread mutate the byte buffer concurrently, without any mutex locks or et cetera.
++ Have each worker thread mutate the byte buffer concurrently, without mutex locks or et cetera.
 + For each byte generation request, XOR all bytes in the buffer and return the result. During this time, worker threads continue.
 + Ensure that at least one operation has been performed on the buffer between each byte output.
 
