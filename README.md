@@ -1,7 +1,7 @@
 ### Note (!)
 This project is by no means cryptographically secure, and shouldn't be used for non-recreational purposes. It's a mere hack, really - a playful experiment on my part. 
 
-If you take a more serious approach (or not), please do get in touch! I'd love to converse/discuss/collaborate on similar ideas.
+If you take a more serious approach (or not), please do get in touch! I'd love to converse/discuss/collaborate on similar ideas. Pull requests welcome.
 
 
 
