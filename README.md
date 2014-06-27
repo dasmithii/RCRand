@@ -1,7 +1,7 @@
 ### RCRand
 After struggling with a race condition issue for an hour or two, I decided to make use of this wonderful unpredictability that is shared resource mutation. 
 
-Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzying over a lego structure, where monkeys are worker threads and lego structure represents memory contents. As they chaotically rearrange blocks, snapshots are taken periodically and translated into integral form. For all practical purposes, these are random.
+Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzying over a lego structure, where monkeys are worker threads and lego structure represents memory contents. As they chaotically rearrange blocks, snapshots are taken periodically and translated into integral form. For all practical purposes, these are random numbers.
 
 
 
@@ -16,11 +16,6 @@ Here's the (summarized) algorithm. It's analogous to a busload of monkeys frenzy
 
 ###### (3) Tear-down
 + Cancel all worker threads.
-
-
-
-### Visualization
-<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png" width="300px" height="300px" />
 
 
 
@@ -66,7 +61,11 @@ rcrand -format
 220
 13
 204
-141
-136
-...
+(... continued)
 ```
+
+
+
+### Visualization
+<img src="https://raw.githubusercontent.com/dasmithii/RCRand/master/img/bytemap.png" width="300px" height="300px" />
+
